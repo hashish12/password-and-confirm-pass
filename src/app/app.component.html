@@ -1,0 +1,34 @@
+<form [formGroup]="NamFomNgs">
+
+	<label>Email : 
+        <input type="email" name="MylHtm" formControlName="MylNgs">
+    </label><br>
+	<div class="errors" *ngIf="(NamFomNgs.controls['MylNgs'].touched || NamFomNgs.controls['MylNgs'].dirty) && 
+            !NamFomNgs.controls['MylNgs'].valid">
+		<span *ngIf="NamFomNgs.controls['MylNgs'].errors.required">This field is required</span>
+		<span *ngIf="NamFomNgs.controls['MylNgs'].errors.email">Enter valid email</span>
+	</div><br>
+
+	<label>Password : 
+        <input type="text" name="PwdHtm" formControlName="PwdNgs">
+    </label><br>
+
+	<div class="errors" *ngIf="NamFomNgs.get('PwdNgs').invalid && (NamFomNgs.get('PwdNgs').touched || NamFomNgs.get('PwdNgs').dirty)">
+		<div *ngIf="NamFomNgs.get('PwdNgs').hasError('required')">
+			password is required
+		</div>
+		<div class="error-text" *ngIf="NamFomNgs.get('PwdNgs').hasError('passwordStrength')">
+			{{NamFomNgs.get('PwdNgs').errors['passwordStrength']}}
+		</div>
+	</div>
+
+	<label for="confirm-password">Confirm Password:</label>
+  <input id="confirm-password" type="password" formControlName="confirmPassword">
+  <div *ngIf="NamFomNgs.get('confirmPassword').invalid && (NamFomNgs.get('confirmPassword').dirty || NamFomNgs.get('confirmPassword').touched)">
+    <div *ngIf="NamFomNgs.get('confirmPassword').errors.required">Confirm password is required.</div>
+		<div *ngIf="NamFomNgs.get('confirmPassword').errors.confirmPasswordValidator">Passsword and
+			Confirm Password didn't match. </div>
+		  </div><br>
+
+	<button [disabled]="!NamFomNgs.valid">Submit</button>
+</form>

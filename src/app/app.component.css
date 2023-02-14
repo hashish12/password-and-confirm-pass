@@ -1,0 +1,14 @@
+p {
+  font-family: Lato;
+}
+ 
+small{
+  padding: 0 0.25rem
+}
+input {
+ margin-bottom:1rem; 
+}
+
+.errors{
+  color: red;
+}
